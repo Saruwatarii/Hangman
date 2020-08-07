@@ -13,7 +13,6 @@ length = len(guessing_word) - len(show_three_letter)
 hidden =  "-" * len(guessing_word)
 # Add the three first visible letters and then the hidden ones.
 hint = show_three_letter + hidden
-
 # Let the user  see the hint before typing
 # user_guess = input("Guess the word: " + hint + " ").lower()
 game_over = 0
@@ -22,6 +21,7 @@ while tries != game_over:
     print()
     print(hidden)
     user_guess = input("Input a letter: ").lower()
+
     if guessing_word == user_guess:
         print("You survived!")
 
@@ -43,9 +43,3 @@ while tries != game_over:
 else:
     print()
     print("Thanks for playing!\nWe'll see how well you did in the next stage")
-
-
-
-
-
-
