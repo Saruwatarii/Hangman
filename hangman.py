@@ -70,7 +70,7 @@ while flag:
                 continue
         else:
             print("You are hanged!")
-    elif player == "exit"
+    elif player == "exit":
         flag = False
     else:
         print("You did not enter 'play' or 'exit, so i will ask you again.")
