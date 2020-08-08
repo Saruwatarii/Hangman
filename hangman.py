@@ -14,24 +14,45 @@ hidden = "-" * len(guessing_word)
 hint = show_three_letter + hidden
 # Let the user  see the hint before typing
 # user_guess = input("Guess the word: " + hint + " ").lower()
+# A list containing letters the user have guessed which not in the hidden word.
+already_used = []
 game_over = 0
 tries = 8
 
 while tries != game_over:
     print()
     print(hidden)
-    user_guess = input("Input a letter: ").lower()
+    user_guess = input("Input a letter: ")
+
+    if len(user_guess) != 1:
+        print("You should input a single letter")
+        continue
+
+    if not user_guess.islower():
+        print("It is not an ASCII lowercase letter")
+        continue
 
     if guessing_word == hidden:
         print(f"{guessing_word}\nYou guessed the word!\nYou survived!")
         break
+# Check whether the letter is in the hidden word and is in the already_used list, if not in both, it gets added to the list
+    if (user_guess not in guessing_word) and (user_guess not in already_used):
+        print("No such letter in the word")
+        already_used.append(user_guess)
+        tries -= 1
+        continue
 
-    elif user_guess not in guessing_word:
+    if user_guess in already_used:
+        print("You already typed this letter")
+        # tries -= 1
+        continue
+
+    if user_guess not in guessing_word:
         print("No such letter in the word")
         tries -= 1
         continue
 
-    elif user_guess in hidden:
+    if user_guess in hidden:
         print("No improvements")
         tries -= 1
         continue
